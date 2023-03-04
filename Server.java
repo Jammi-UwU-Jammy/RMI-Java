@@ -8,12 +8,17 @@ public class Server implements DoMagic{
     //public Server(){}
 
     @Override
-    public String matrixMultiply(Matrix matrix1, Matrix matrix2) throws RemoteException {
-        Matrix resultMatrix =  matrix1.multiply(matrix2);
-        resultMatrix.printMatrix();
+    public String matrixMultiply(String matrixString1, String matrixString2) throws RemoteException {
+        Parser parser = new Parser(matrixString1);
+        Matrix firstMatrix = new Matrix(parser.getMatrix());
+
+        Parser parser2 = new Parser(matrixString2);
+        Matrix secondMatrix = new Matrix(parser2.getMatrix());
+
+        Matrix resultMatrix = firstMatrix.multiply(secondMatrix);
+        // resultMatrix.printMatrix();
 
         return resultMatrix.toString();
-        //throw new UnsupportedOperationException("Unimplemented method 'matrixMultiply'");
     }
 
     
