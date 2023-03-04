@@ -76,6 +76,19 @@ public class Matrix {
             System.out.println();
         }
     }
+
+    public String toString(){
+        String string = "";
+
+        for (int y = 0; y < this.dimension[0] ; ++y){
+            for (int x = 0; x < this.dimension[1]; ++x){
+                string += rows[y][x] + "\t";
+            }
+            string += "\n";
+        }
+
+        return string;
+    }
     
 
 }

@@ -8,10 +8,15 @@ public class Server implements DoMagic{
     //public Server(){}
 
     @Override
-    public String matrixMultiply() throws RemoteException {
-        return "AAAAA";
+    public String matrixMultiply(Matrix matrix1, Matrix matrix2) throws RemoteException {
+        Matrix resultMatrix =  matrix1.multiply(matrix2);
+        resultMatrix.printMatrix();
+
+        return resultMatrix.toString();
         //throw new UnsupportedOperationException("Unimplemented method 'matrixMultiply'");
     }
+
+    
 
     public static void main(String args[]){
         String host = (args.length < 1) ? null : args[0];
@@ -28,12 +33,13 @@ public class Server implements DoMagic{
             registry.bind("Do magic", stub); 
     
             System.err.println("Server ready");
-            
+
         } catch (Exception e) {
             System.err.println("Server exception: " + e.toString());
             e.printStackTrace();
         }
 
     }
+
     
 }
